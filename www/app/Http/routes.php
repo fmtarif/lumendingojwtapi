@@ -23,3 +23,12 @@ $api->version('v1', [], function ($api) {
     $api->post('/sessions', 'App\Http\Controllers\AuthenticateController@create'); //login
     $api->delete('/sessions', 'App\Http\Controllers\AuthenticateController@destroy'); //logout
 });
+
+/**
+ * Routes for resource posts
+ */
+$app->get('posts', 'PostsController@all');
+$app->get('posts/{id}', 'PostsController@get');
+$app->post('posts', 'PostsController@add');
+$app->put('posts/{id}', 'PostsController@put');
+$app->delete('posts/{id}', 'PostsController@remove');
