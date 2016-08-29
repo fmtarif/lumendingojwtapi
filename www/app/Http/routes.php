@@ -20,5 +20,6 @@ $api->version('v1', ['middleware' => 'api.auth', 'providers' => 'jwt'], function
 
 // Publicly accessible routes
 $api->version('v1', [], function ($api) {
-    $api->post('/authenticate', 'App\Http\Controllers\AuthenticateController@backend');
+    $api->post('/sessions', 'App\Http\Controllers\AuthenticateController@create'); //login
+    $api->delete('/sessions', 'App\Http\Controllers\AuthenticateController@destroy'); //logout
 });

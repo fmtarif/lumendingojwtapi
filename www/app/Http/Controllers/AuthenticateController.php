@@ -13,7 +13,7 @@ class AuthenticateController extends Controller
         $this->auth = $auth;
     }
 
-    public function backend(Request $request)
+    public function create(Request $request)
     {
         // grab credentials from the request
         $credentials = $request->only('email', 'password');
@@ -30,5 +30,19 @@ class AuthenticateController extends Controller
 
         // all good so return the token
         return response()->json(compact('token'));
+    }
+
+    public function destroy(Request $request) {
+        if ($token = $this->auth->getToken()) {
+            try {
+                $this->auth->invalidate($token);
+            } catch (JWTException $e) {
+                return response()->json(['error' => 'invalid_token'], 401);
+            }
+
+            return response()->json(['message' => 'logged out']);
+        }
+        return response()->json(['error' => 'invlaid_token'], 401);
+
     }
 }
