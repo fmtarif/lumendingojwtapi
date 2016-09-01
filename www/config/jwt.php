@@ -111,7 +111,7 @@ return [
 
     'providers' => [
 
-        'user' => \App\Models\ApiSubscriber::class,
+        'user' => \App\Models\User::class,
 
         /*
         |--------------------------------------------------------------------------

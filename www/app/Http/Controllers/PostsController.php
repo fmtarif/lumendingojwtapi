@@ -3,7 +3,7 @@
 
 class PostsController extends Controller {
 
-	const MODEL = "App\Posts";
+	const MODEL = "App\Models\Post";
 
 	use RESTActions;
 

@@ -27,14 +27,14 @@ class DefaultPopulator extends Seeder
 {
     public function run()
     {
-        $ApiSubscriber = App\Models\ApiSubscriber::create(
+        $user = App\Models\User::create(
             [
                 'email' => 'test@user.dev',
                 'password' => 'secret',
             ]
         );
 
-        unset($ApiSubscriber);
+        unset($user);
         return;
     }
 

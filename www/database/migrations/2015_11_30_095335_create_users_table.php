@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateApiSubscribersTable extends Migration
+class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,12 @@ class CreateApiSubscribersTable extends Migration
      */
     public function up()
     {
-        Schema::create('api_subscribers', function (Blueprint $table) {
-            $table->increments('api_subscriber_id');
+        Schema::create('users', function (Blueprint $table) {
+            $table->increments('user_id');
+            $table->string('name', 100);
             $table->string('email', 255);
             $table->string('password', 255);
+            $table->boolean('active')->default(1);
             $table->timestamps();
             $table->softDeletes();
 
@@ -23,7 +25,10 @@ class CreateApiSubscribersTable extends Migration
             $table->unique('email');
 
             // indexes
-            $table->index(['email', 'password']);
+            $table->index([
+              'email',
+              'password'
+            ]);
         });
     }
 
@@ -34,6 +39,6 @@ class CreateApiSubscribersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('api_subscribers');
+        Schema::drop('users');
     }
 }

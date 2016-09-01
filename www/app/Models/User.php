@@ -5,14 +5,14 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class ApiSubscriber extends Model implements Authenticatable, JWTSubject
+class User extends Model implements Authenticatable, JWTSubject
 {
     use \Illuminate\Auth\Authenticatable;
 
-    protected $table = 'api_subscribers';
-    protected $primaryKey = 'api_subscriber_id';
+    protected $table = 'users';
+    protected $primaryKey = 'user_id';
 
-    protected $visible = ['api_subscriber_id', 'email', 'created_at', 'updated_at'];
+    protected $visible = ['user_id', 'email', 'active', 'created_at', 'updated_at'];
 
     /**
      * @param $value

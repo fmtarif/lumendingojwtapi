@@ -66,7 +66,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => '\App\Models\ApiSubscriber'
+            'model' => '\App\Models\User'
         ],
 
         // 'users' => [
