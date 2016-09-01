@@ -23,7 +23,7 @@ $app = new Laravel\Lumen\Application(
     realpath(__DIR__.'/../')
 );
 
-// $app->withFacades();
+$app->withFacades();
 
 $app->withEloquent();
 
@@ -100,6 +100,8 @@ app('Dingo\Api\Auth\Auth')->extend('jwt', function ($app) {
 });
 
 $app->register(Barryvdh\Cors\LumenServiceProvider::class);
+
+$app->register(Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class);
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes

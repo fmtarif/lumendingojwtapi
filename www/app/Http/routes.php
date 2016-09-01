@@ -46,3 +46,8 @@ $api->version('v1', [], function ($api) {
     $api->post('/sessions', 'App\Http\Controllers\AuthenticateController@create'); //login
     $api->delete('/sessions', 'App\Http\Controllers\AuthenticateController@destroy'); //logout
 });
+
+//log viewer
+$app->group(['namespace' => '\Rap2hpoutre\LaravelLogViewer'], function() use ($app) {
+    $app->get('logs', 'LogViewerController@index');
+});
